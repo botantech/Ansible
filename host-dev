@@ -1,0 +1,22 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python
+
+device_type=cisco_ios
+ansible_user=admin
+ansible_password=cisco
+
+
+ansible_connection=local
+
+[routers]
+r1 ansible_host=172.16.46.241
+r2 ansible_host=172.16.46.242
+r3 ansible_host=172.16.46.136
+
+
+[switches]
+sw1 ansible_host=172.16.46.245
+
+
+
+

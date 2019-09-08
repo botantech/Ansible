@@ -1,0 +1,133 @@
+ssh root@172.16.1.1 hostname
+ssh root@172.16.1.1 whoami
+
+scp file root@172.16.1.1:/home/
+
+sftp root@172.16.1.1
+
+OpenSSH Clients
+---------------
+
+ssh user@host command
+putty for windows users
+
+man ls
+whatis whatis
+whatis ls
+whatis crontab
+pinfo crontab
+
+working with Cli
+----------------
+ls
+cd /etc
+whoami
+ls -a
+ll
+w
+uptime
+pwd
+history
+!5
+!!
+!?tc
+
+moving around quickly
+---------------------
+cd to change directory
+ls to list contents
+pwd to display your current directory
+TAB completion of object names
+
+
+Manipulating FileSystems object
+-------------------------------
+mkdir lab
+cd lab
+touch fil1 file2 file3
+cp file1 to file5
+mv file1 file6
+cp -R dirA dirB
+mv dirA dirB
+rm file1 file2
+rmdir to delete empty directory
+rm -rf dirA         -r reccursive   -f force
+
+Users and Groups
+----------------
+every process runs as a user
+every FileSystem object belongs to a user
+every regular user has a /home directory, which
+contains their data and preferences.
+
+3 account types
+- root (admin)    - UID 0
+- System          - UID 1-200 7 201-999
+- Regular         - UID 1000+
+
+User Management
+---------------
+useradd to add a user
+passwd to set a user password
+usermod to manage a user
+userdel to remove a user
+
+/etc/passwd     account info
+/etc/shadow     Password Hash
+
+id
+id root
+id -u
+id -un
+users
+who
+getent passwd user
+useradd newuser
+passwd newuser
+usermod -G wheel newuser
+usermod -G users newuser
+usermod -aG wheel,users newuser
+usermod -L newuser
+usermod -U newuser
+
+Groups
+------
+- Every process runs as a member of a group
+- Every FileSystem object belongs to a group
+- Every group name maps to a unique GID
+
+Groups
+groups newuser
+groupadd newgroup
+
+usermod -aG newgroup newuser
+id newuser
+getent group newgroup
+groupdel newgroup
+
+Group Management
+----------------
+- id to view user group membership
+- Groups for a list of group memberships
+- groupadd to add a group
+- groupdel to remove a group
+- groupmod to manage/modify a group
+- getent group to view group DB entry
+- /etc/group    Group info
+
+
+Controlling User Access
+-----------------------
+chage -l newuser
+chage newuser
+
+Password Ageing
+---------------
+- chage USER  interactive ageing Control.
+- chage options USER
+
+Preventing Logins
+-----------------
+usermod -L USER     to lock user's account
+usermod -U USER     USER to unlock
+

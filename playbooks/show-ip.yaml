@@ -1,0 +1,16 @@
+# Show-ip.yaml
+
+---
+  - hosts: routers
+    gather_facts: false
+
+    tasks:
+      - name: Show ip interfaces
+        ios_command:
+          commands:
+              - show version
+          
+        
+
+              
+

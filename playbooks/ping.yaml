@@ -1,0 +1,10 @@
+# Ping
+---
+  - hosts: server
+    gather_facts: false
+    become: True
+
+    tasks:
+      - name: Pinging Redhat
+        action: ping
+        

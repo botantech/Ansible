@@ -1,0 +1,40 @@
+# Rip Config R1-R2
+
+---
+  - hosts: r1
+    gather_facts: false
+
+    tasks:
+      - name: Assign IP address to fa0/1
+        ios_config:
+          parents: "int fa0/1"
+          lines:
+            - ip address 10.0.0.1 255.255.255.0
+            - no shut
+    
+      - name: Configure Rip
+        ios_config:
+          parents: "router rip"
+          lines:
+            - network 10.0.0.0
+            - network 1.1.1.0
+  
+  - hosts: r2
+    gather_facts: false
+
+    tasks:
+      - name: Assign IP address to fa0/1
+        ios_config:
+          parents: "int fa0/1"
+          lines:
+            - ip address 10.0.0.2 255.255.255.0
+            - no shut
+    
+      - name: Configure Rip
+        ios_config:
+          parents: "router rip"
+          lines:
+            - network 10.0.0.0
+            - network 2.2.2.0
+        
+   

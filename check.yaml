@@ -1,0 +1,69 @@
+---
+  - hosts: routers
+    gather_facts: false
+
+    tasks:
+      - name: show running
+        ios_command:
+          commands:
+             - show run
+
+        register: output
+      - debug: var=output
+
+      - local_action: copy content="{{ output.stdout }}" dest="/Users/bootaan/ansible/file"
+
+Spanning Tree Protocol
+----------------------
+  - Stp stop the loops which occurs when you have multiple links between  switches
+  - stp stops avoiding broadcast storms, multiple frame copies.
+  - stp is a open standard [IEEE 802.1D].
+  - stp is enabled by default on all cisco catalyst switches.
+
+  how stp works
+  -------------
+    selecting the root bridge
+    selecting the root port
+    selecting designated port and non designated port
+    Link speed
+    10 mbps   100
+    100 mbps  19
+    1 gbps    4
+
+
+
+TCP/IP
+IP address
+Network and host portion
+
+TCP/IP is a standard Protocol used between
+computers and network devices for communication
+
+TCP/IP addressing
+-----------------
+  ip address is a logical address given to each and every devices in
+  Network
+  it is a network layer address (layer 3)
+
+
+
+  Etherchannel/link aggregation/port-channel
+  ------------------------------------------
+    - is used to aggregate bandwidth between multiple l2/l3
+    interfaces.
+    - etherchannel increases bandwidth and provides redundancy
+    by aggregating individual links between switches.
+    combining multiple links into one logical link.
+    - up to 8 links can be used to combine in to one logical links
+requirements
+-------------
+    - same speed
+    - same vlan
+    we can configure etherchannel either dynamically or manually
+    two Protocols used for etherchannel
+    -----------------------------------
+      - PAGP cisco
+      - LACP open standard
+
+    show etherchannel summary
+    r148wx

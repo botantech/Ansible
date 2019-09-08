@@ -1,0 +1,27 @@
+---
+  - hosts: routers
+    gather_facts: false
+
+    tasks:
+      - name: backup the devices
+        ios_command:
+        commands:
+           - show running-config
+        
+      
+        register: config
+      
+      - name: copy backup to /etc/ansible/backup
+        
+        copy:
+          content: "{{ config.stdout[0] }}"
+          dest: "/etc/ansible/backup/show{{ inventory_hostname }}.txt
+
+          echo "ansible" >> README.md
+          git init
+          git add README.md
+          git commit -m "First commit"
+          git remote add origin https://github.com/botantech/ansible.git
+          git push -u origin master
+
+  

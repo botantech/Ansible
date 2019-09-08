@@ -1,0 +1,10 @@
+# Installing-services.yaml
+
+---
+  - hosts: server
+    gather_facts: false
+    become: true
+
+    tasks:
+      - name: Installing Apache server
+        yum: name=httpd state=present

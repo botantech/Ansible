@@ -1,0 +1,33 @@
+# Creating a loopback 
+
+---
+  - hosts: r1
+    gather_facts: false
+
+    tasks:
+      - name: Creating a loopback
+        ios_config:
+          parents: "int loop 1"
+          lines:
+            - ip address 1.1.1.1 255.255.255.0
+  
+  - hosts: r2
+    gather_facts: false
+
+    tasks:
+      - name: Creating a loopback
+        ios_config:
+          parents: "int loop 1"
+          lines:
+            - ip address 2.2.2.1 255.255.255.0
+  
+  - hosts: r3
+    gather_facts: false
+
+    tasks:
+      - name: Creating a loopback
+        ios_config:
+          parents: "int loop 1"
+          lines:
+            - ip address 3.3.3.1 255.255.255.0
+            

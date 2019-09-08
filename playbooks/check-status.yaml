@@ -1,0 +1,11 @@
+# Check-status.yaml
+
+---
+  - hosts: server
+    gather_facts: false
+    become: true
+
+    tasks:
+      - name: Check the status of apache
+        command: service httpd status
+        

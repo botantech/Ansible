@@ -1,0 +1,10 @@
+#yum-update.yaml
+
+---
+  - hosts: server
+    gather_facts: false
+
+    tasks:
+      - name: Updating the server
+        yum: name=* state=latest
+        

@@ -1,0 +1,12 @@
+---
+  - hosts: routers
+    gather_facts: false
+    
+    tasks:
+      - name: show ip 
+        ios_command:
+          commands:
+            - show ip interface brief
+        
+        register: output
+      - debug: var=output
